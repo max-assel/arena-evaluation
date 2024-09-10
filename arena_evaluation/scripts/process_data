@@ -46,6 +46,8 @@ if __name__ == "__main__":
 
     combined_data = pd.concat(data_dump)
 
+    combined_data.to_csv(os.path.join(base_path, "data.csv"))
+
     print(combined_data.iloc[0])
 
     plots.set_dir(args.output)
