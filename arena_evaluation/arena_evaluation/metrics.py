@@ -72,9 +72,9 @@ class PedsimMetric(Metric, typing.TypedDict):
 
 
 class Config:
-    TIMEOUT_TRESHOLD = 180e9
-    MAX_COLLISIONS = 3
-    MIN_EPISODE_LENGTH = 5
+    TIMEOUT_TRESHOLD = 60
+    MAX_COLLISIONS = 1
+    MIN_EPISODE_LENGTH = 1
     
     PERSONAL_SPACE_RADIUS = 1 # personal space is estimated at around 1'-4'
     ROBOT_GAZE_ANGLE = np.radians(5) # size of (one half of) direct robot gaze cone
@@ -221,6 +221,8 @@ class Metrics:
 
         while True:
             current_episode = data[data["episode"] == i]
+
+            # print("current_episode: ", current_episode)
 
             if len(current_episode) < Config.MIN_EPISODE_LENGTH:
                 break
